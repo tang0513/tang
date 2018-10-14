@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.txy.mapper.UserMapper">
+
+	<select id="findRollList" resultType="com.txy.entity.Roll">
+		select * from a_roll where deid = 0
+		<!-- <if test="sname!=null and sname!=''">
+			and sname = #{sname}
+		</if>
+		<if test="cname!=null and cname!=''">
+			and cname = #{cname}
+		</if> -->
+		<if test="stuname!=null and stuname!=''">
+	        and rnum like concat('%',#{stuname},'%') or stuname like concat('%',#{stuname},'%')
+	    </if>
+	</select>
+	
+</mapper>
